@@ -12,18 +12,14 @@
             var last = event.results.length - 1;
             var command = event.results[last][0].transcript;
             message.textContent = 'Voice Input: ' + command + '.';
-            if(command.toLowerCase() === 'select steve'){
-                document.querySelector('#chkSteve').checked = true;
+            if(command.toLowerCase() === 'flip right'){
+				 previous();
             }
-            else if (command.toLowerCase() === 'tony'){
-                document.querySelector('#chkTony').checked = true;
+            else if (command.toLowerCase() === 'flip left'){
+				next();
+              //  document.querySelector('#chkTony').checked = true;
             }
-            else if (command.toLowerCase() === 'select bruce'){
-                document.querySelector('#chkBruce').checked = true;
-            }
-            else if (command.toLowerCase() === 'select nick'){
-                document.querySelector('#chkNick').checked = true;
-            }   
+            
         };
         recognition.onspeechend = function() {
             recognition.stop();
