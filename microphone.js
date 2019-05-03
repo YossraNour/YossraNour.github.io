@@ -12,10 +12,10 @@
             var last = event.results.length - 1;
             var command = event.results[last][0].transcript;
             message.textContent = 'Voice Input: ' + command + '.';
-            if(command.toLowerCase() === 'flip right'){
+            if(command.toLowerCase() === 'right'){
 				 previous();
             }
-            else if (command.toLowerCase() === 'flip left'){
+            else if (command.toLowerCase() === 'left'){
 				next();
               //  document.querySelector('#chkTony').checked = true;
             }
