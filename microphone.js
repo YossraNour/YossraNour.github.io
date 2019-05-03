@@ -23,7 +23,10 @@
             }
             else if (command.toLowerCase() === 'select nick'){
                 document.querySelector('#chkNick').checked = true;
-            }   
+            } 
+			else if (command.toLowerCase() === 'right'){
+                next();
+            }  			
             
         };
         recognition.onspeechend = function() {
