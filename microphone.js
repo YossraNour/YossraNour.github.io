@@ -26,7 +26,10 @@
             } 
 			else if (command.toLowerCase() === 'right'){
                 next();
-            }  			
+            }  	
+			else if (command.toLowerCase() === 'left'){
+               previous();
+            }  				
             
         };
         recognition.onspeechend = function() {
