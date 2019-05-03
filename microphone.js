@@ -12,19 +12,7 @@
             var last = event.results.length - 1;
             var command = event.results[last][0].transcript;
             message.textContent = 'Voice Input: ' + command + '.';
-            if(command.toLowerCase() === 'select steve'){
-                document.querySelector('#chkSteve').checked = true;
-            }
-            else if (command.toLowerCase() === 'select tony'){
-                document.querySelector('#chkTony').checked = true;
-            }
-            else if (command.toLowerCase() === 'select bruce'){
-                document.querySelector('#chkBruce').checked = true;
-            }
-            else if (command.toLowerCase() === 'select nick'){
-                document.querySelector('#chkNick').checked = true;
-            } 
-			else if (command.toLowerCase() === 'right'){
+             if (command.toLowerCase() === 'right'){
                 next();
             }  	
 			else if (command.toLowerCase() === 'left'){
