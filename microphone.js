@@ -17,7 +17,10 @@
             }  	
 			else if (command.toLowerCase() === 'left'){
                previous();
-            }  				
+            }  
+			else if (command.toLowerCase() === 'eight'){
+               $(".eight");
+            }  		
             
         };
         recognition.onspeechend = function() {
