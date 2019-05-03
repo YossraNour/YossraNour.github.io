@@ -1,17 +1,17 @@
 /*global console, alert */
 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || undefined;
+navigator.mediaDevices.getUserMedia= navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || undefined;
 var videoElement;
 
 function initializeWebcamSwiper() {
-	if (navigator.getUserMedia === undefined) {
+	if (navigator.mediaDevices.getUserMedia === undefined) {
 		if (console !== undefined) {
 			console.log("Browser doesn't support getUserMedia");
 			return;
 		}
 	}
 
-	navigator.getUserMedia({video: true, audio: false}, function (stream) {
+	navigator.mediaDevices.getUserMedia({video: true, audio: false}, function (stream) {
 		window.webcamSwiperStream = stream;
 
 		// Create a video element and set its source to the stream from the webcam
