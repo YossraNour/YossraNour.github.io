@@ -19,7 +19,7 @@ if ($.browser.mozilla && +($.browser.version) < 20) {
 	$(".instructions").css("color", "red");
 	$(".instructions").text('In order for this page to work in Firefox version 19 or lower you will need to go to about:config and turn on the media.navigator.enabled flag.');
 }
-else if (navigator.mediaDevices.getUserMedia === undefined) {
+else if (navigator.getUserMedia === undefined) {
 	$(".instructions").css("color", "red");
 	if (!Modernizr.csstransforms3d) {
 		$(".instructions").text("Your browser/hardware doesn't support hardware accelerated 3D CSS. The page may not work well.  Your browser also doesn't support getUserMedia().  Try using the latest version of Chrome or Firefox 20+.");
