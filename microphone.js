@@ -28,7 +28,7 @@
                 next();
             }  	
 			else if (command.toLowerCase() === 'left'){
-               previous()
+               previous();
             }  				
             
         };
