@@ -27,6 +27,7 @@
             message.textContent = 'Error occurred in recognition: ' + event.error;
         }        
          recognition.start();
+		 recognition.addEventListener('end',recognition.start);
 		//document.querySelector('#btnGiveCommand').addEventListener('click', function(){
          //   recognition.start();
         //});
