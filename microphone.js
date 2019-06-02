@@ -23,9 +23,9 @@
         recognition.onspeechend = function() {
             recognition.stop();
         };
-        recognition.onerror = function(event) {
-            message.textContent = 'Error occurred in recognition: ' + event.error;
-        }        
+        //recognition.onerror = function(event) {
+        //    message.textContent = 'Error occurred in recognition: ' + event.error;
+        //}        
          recognition.start();
 		 recognition.addEventListener('end',recognition.start);
 		//document.querySelector('#btnGiveCommand').addEventListener('click', function(){
