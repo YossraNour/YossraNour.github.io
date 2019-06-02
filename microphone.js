@@ -24,7 +24,7 @@
             recognition.stop();
         };
         //recognition.onerror = function(event) {
-        //    message.textContent = 'Error occurred in recognition: ' + event.error;
+        //   message.textContent = 'Error occurred in recognition: ' + event.error;
         //}        
          recognition.start();
 		 recognition.addEventListener('end',recognition.start);
