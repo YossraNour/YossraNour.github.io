@@ -12,10 +12,10 @@
             var last = event.results.length - 1;
             var command = event.results[last][0].transcript;
             message.textContent = 'Voice Input: ' + command + '.';
-             if (command.toLowerCase() === 'right'){
+             if (command.includes('right')){
                 next();
             }  	
-			else if (command.toLowerCase() === 'left'){
+			else if (command.includes('left')){
                previous();
             }  	
             
