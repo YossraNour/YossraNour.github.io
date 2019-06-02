@@ -1,36 +1,41 @@
 /*global console, alert */
 
-navigator.mediaDevices.getUsermedia = navigator.mediaDevices.getUsermedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || undefined;
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || undefined;
 var videoElement;
 
 function initializeWebcamSwiper() {
-	if (navigator.mediaDevices.getUsermedia === undefined) {
+	if (navigator.getUserMedia === undefined) {
 		if (console !== undefined) {
 			console.log("Browser doesn't support getUserMedia");
 			return;
 		}
 	}
 
+	navigator.getUserMedia({video: true, audio: false}, function (stream) {
+		window.webcamSwiperStream = stream;
 
-//redoing getUsermedia
+		// Create a video element and set its source to the stream from the webcam
+		videoElement = document.createElement("video");
+		videoElement.style.display = "none";
+		document.getElementsByTagName("body")[0].appendChild(videoElement);
+		if (window.URL === undefined) {
+			window.URL = window.webkitURL;
+		}
 
-	navigator.mediaDevices.getUserMedia({
-		video: true,
-		audio: false
-	}).then(stream =>{
-		  // Create a video element and set its source to the stream from the webcam
-		  window.webcamSwiperStream=stream;
-		  videoElement = document.createElement("video");
-		  videoElement.muted = true;
-		  //videoElement.autoplay = true;
-		  videoElement.style.display = "none";
-		  document.getElementsByTagName("body")[0].appendChild(videoElement);
-		videoElement.srcObject = stream;
-		videoElement.addEventListener('load',startSwipeRecogntion)
-	}).catch(console.error)
+		if (videoElement.mozSrcObject !== undefined) {
+			videoElement.mozSrcObject = stream;
+		}
+		else {
+			videoElement.src = window.URL.createObjectURL(stream);
+		}
+		videoElement.play();
 
-
-
+		// Wait for the video element to initialize
+		videoElement.addEventListener("loadeddata", startSwipeRecogntion);
+	}, function(err) {
+		console('Something went wrong in getUserMedia');
+	});
+}
 
 function startSwipeRecogntion() {
 	// Now that the video element has been initialized, determine the webcam resolution from it
@@ -206,4 +211,4 @@ function destroyWebcamSwiper() {
 		window.webcamSwiperStream.stop();
 		window.webcamSwiperStream = undefined;
 	}
-}}
+}
