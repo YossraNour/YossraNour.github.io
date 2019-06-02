@@ -11,7 +11,7 @@
         recognition.onresult = function(event) {
             var last = event.results.length - 1;
             var command = event.results[last][0].transcript;
-            message.textContent = 'Voice Input: ' + command + '.';
+            message.textContent = 'Voice Input:' + command + '.';
              if (command.includes('right')){
                 next();
             }  	
