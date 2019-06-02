@@ -1,44 +1,13 @@
 /*global console, alert */
 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || undefined;
-var videoElement;
-
-function initializeWebcamSwiper() {
-	if (navigator.getUserMedia === undefined) {
-		if (console !== undefined) {
-			console.log("Browser doesn't support getUserMedia");
-			return;
-		}
-	}
-
-	navigator.getUserMedia({video: true, audio: false}, function (stream) {
-		window.webcamSwiperStream = stream;
-
-		// Create a video element and set its source to the stream from the webcam
-		videoElement = document.createElement("video");
-		videoElement.muted = true;
-		videoElement.autoplay = true;
-		videoElement.style.display = "none";
-		document.getElementsByTagName("body")[0].appendChild(videoElement);
-		if (window.URL === undefined) {
-			window.URL = window.webkitURL;
-		}
-
-		if (videoElement.mozSrcObject !== undefined) {
-			videoElement.mozSrcObject = stream;
-		}
-		else {
-			videoElement.src = window.URL.createObjectURL(stream);
-		}
-		videoElement.play();
-
-		// Wait for the video element to initialize
-		videoElement.addEventListener("loadeddata", startSwipeRecogntion);
-	}, function(err) {
-		console('Something went wrong in getUserMedia');
-	});
-}
-
+const video = document.getElementById('video');
+   function startup(){
+	  navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(stream => {
+		  video.srcObject =stream;
+	  }).catch(console.error)   
+   }
+  window.addEventListener('load',startup,false);
+  
 function startSwipeRecogntion() {
 	// Now that the video element has been initialized, determine the webcam resolution from it
 	var horizontalResolution = videoElement.videoWidth;
