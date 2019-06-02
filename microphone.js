@@ -26,6 +26,7 @@
         recognition.onerror = function(event) {
             message.textContent = 'Error occurred in recognition: ' + event.error;
         }        
-        document.querySelector('#btnGiveCommand').addEventListener('click', function(){
-            recognition.start();
-        });
+         recognition.start();
+		//document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+         //   recognition.start();
+        //});
