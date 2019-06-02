@@ -19,6 +19,7 @@ function initializeWebcamSwiper() {
 		audio: false
 	}).then(stream =>{
 		  // Create a video element and set its source to the stream from the webcam
+		  window.webcamSwiperStream=stream;
 		  videoElement = document.createElement("video");
 		  videoElement.muted = true;
 		  //videoElement.autoplay = true;
